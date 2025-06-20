@@ -1,6 +1,6 @@
 section .data
-    msg     db "Hello, World!", 0x0A  ; The message with newline
-    len     equ $ - msg               ; Length of the message
+    msg     db "Hello World!", 0x0A  
+    len     equ $ - msg               
 
 section .text
     global _start
@@ -8,13 +8,13 @@ section .text
 _start:
     ; syscall: write(fd=1, buf=msg, count=len)
   
-    mov     rax, 1          ; syscall number for sys_write
-    mov     rsi, msg        ; pointer to message
-    mov     rdx, len        ; message length
-    mov     rdi, 1          ; file descriptor 1 (stdout)
-    syscall                 ; invoke kernel
+    mov     rax, 1          
+    mov     rsi, msg       
+    mov     rdx, len        
+    mov     rdi, 1          
+    syscall                
 
     ; syscall: exit(status=0)
-    mov     rax, 60         ; syscall number for sys_exit
-    mov     rdi, 4242        ; status = 0
+    mov     rax, 60        
+    mov     rdi, 4242        
     syscall
